@@ -3,10 +3,20 @@ import {AppComponent} from './app/app.component';
 import {LoginComponent} from "./app/login/login.component";
 import { provideRouter, Routes } from "@angular/router";
 import {routes} from './app/app.router';
+import {TokenInterceptor} from '../src/app/interceptors/token.interceptor';
+import {JwtInterceptor} from "./app/interceptors/jwt.interceptor";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 
 
+const interceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+]
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes)],
+  providers: [
+    provideRouter(routes),
+    ...interceptorProviders
+  ],
 }).catch((err) => console.error(err));
 
