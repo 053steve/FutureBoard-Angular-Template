@@ -1,5 +1,6 @@
 import {Routes} from "@angular/router";
 import {LoginComponent} from "./login/login.component";
+import { AuthGuard } from './guards/auth.guards';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,7 @@ export const routes: Routes = [
       import('./main/main.component').then(
         (mod) => mod.MainComponent
       ),
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '/login' }
 ];
