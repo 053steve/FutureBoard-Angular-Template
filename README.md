@@ -2,5 +2,13 @@
 
 # Todo
 
-  1. Creatw login to guarded page
-     1.1 do this by packaging services and assets from previous projects (ex onlybu) to create common package for futureboard angular FE 
+* auth-guard (awaiting integration with client service)
+* tailwind css (done)
+* translation
+* session-service
+* loading-service
+* token-service
+* interceptors (awaiting integration with client service + retry function)
+* environment (done)
+* package for common services
+* package for client service
