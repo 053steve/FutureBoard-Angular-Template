@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {SharedModule} from "../common/modules/shared.module";
-// import { CommonModule } from '@angular/common';
 
 
 @Component({

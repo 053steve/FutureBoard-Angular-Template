@@ -1,16 +1,15 @@
 import {bootstrapApplication} from '@angular/platform-browser';
 import {AppComponent} from './app/app.component';
-import { provideRouter, Routes } from "@angular/router";
+import { provideRouter } from "@angular/router";
 import {routes} from './app/app.router';
 import {TokenInterceptor} from './app/common/interceptors/token.interceptor';
 import {JwtInterceptor} from "./app/common/interceptors/jwt.interceptor";
-import {HTTP_INTERCEPTORS, HttpHandler} from "@angular/common/http";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClient} from "@angular/common/http";
 import { HttpClientModule } from "@angular/common/http";
-
-
 import {importProvidersFrom} from "@angular/core";
+import {TranslateStore} from "@ngx-translate/core";
 
 // required for AOT compilation
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -27,6 +26,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     ...interceptorProviders,
+    TranslateStore,
     importProvidersFrom(HttpClientModule)
   ],
 }).catch((err) => console.error(err));
