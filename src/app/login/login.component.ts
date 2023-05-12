@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
+import {SharedModule} from "../common/modules/shared.module";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    SharedModule,
+
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

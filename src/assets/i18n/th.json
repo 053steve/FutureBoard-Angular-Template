@@ -1,9 +1,9 @@
 {
     "LOGIN": {
-        "LOGIN_MSG": "หน้า login"
+        "HEADING": "หน้า login"
     },
     "MAIN": {
-        "HEADER_TXT": "หน้า main ค้าบ"
+        "HEADING": "หน้า main ค้าบ"
 
     }
 }

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {SharedModule} from "../common/modules/shared.module";
+// import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule],
+  imports: [SharedModule],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
