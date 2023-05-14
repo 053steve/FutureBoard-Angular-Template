@@ -10,6 +10,11 @@ import {HttpClient} from "@angular/common/http";
 import { HttpClientModule } from "@angular/common/http";
 import {importProvidersFrom} from "@angular/core";
 import {TranslateStore} from "@ngx-translate/core";
+import {StoreModule} from "@ngrx/store";
+import {spinnerReducer} from "./app/common/components/spinner/spinner.reducer";
+import {StoreRouterConnectingModule} from "@ngrx/router-store";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {EffectsModule} from "@ngrx/effects";
 
 // required for AOT compilation
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -27,7 +32,15 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     ...interceptorProviders,
     TranslateStore,
-    importProvidersFrom(HttpClientModule)
+    importProvidersFrom(
+      HttpClientModule,
+      StoreModule.forRoot({
+        spinner: spinnerReducer
+      }),
+      StoreRouterConnectingModule.forRoot(),
+      StoreDevtoolsModule.instrument(),
+      EffectsModule.forRoot()
+    )
   ],
 }).catch((err) => console.error(err));
 

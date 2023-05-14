@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import {SharedModule} from "./common/modules/shared.module";
+import {SpinnerComponent} from "./common/components/spinner/spinner.component";
+
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,8 @@ import {SharedModule} from "./common/modules/shared.module";
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
-    RouterModule,
-    SharedModule
+    SpinnerComponent,
+    RouterModule
   ]
 })
 

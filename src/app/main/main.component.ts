@@ -5,7 +5,9 @@ import {SharedModule} from "../common/modules/shared.module";
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [SharedModule],
+  imports: [
+    SharedModule
+  ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })

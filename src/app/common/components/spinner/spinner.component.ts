@@ -1,25 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-// import { showSpinner, hideSpinner } from './spinner.actions';
+import {select, Store} from '@ngrx/store';
+import {SpinnerState} from "./spinner.interface";
+import {CommonModule} from "@angular/common";
+import {isLoadingSelector} from "./spinner.selector";
 
 @Component({
   selector: 'app-spinner',
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   template: `
-    <div class="spinner-overlay" *ngIf="showSpinner$ | async">
-      <div class="spinner-container">
-        <div class="spinner"></div>
-      </div>
-    </div>
+      <ng-container *ngIf="showSpinner$ | async as showSpinner">
+          <div class="spinner-overlay" *ngIf="showSpinner">
+              <div class="spinner-container">
+                  <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+              </div>
+          </div>
+      </ng-container>
   `,
-  styleUrls: ['./spinner.component.css']
+
 })
 export class SpinnerComponent implements OnInit {
-  showSpinner$: Observable<boolean>;
+  showSpinner$: Observable<boolean> | undefined;
 
-  constructor(private store: Store<{ spinner: boolean }>) {}
+  constructor(private store: Store<SpinnerState>) {}
 
   ngOnInit() {
-    this.showSpinner$ = this.store.select('spinner');
+    console.log('this.store.select(isLoading)');
+    // console.log(this.store.select('isLoading'));
+    // this.showSpinner$ = this.store.select('isLoading');
+
+    this.showSpinner$ = this.store.pipe(select(isLoadingSelector))
+    console.log(this.showSpinner$);
   }
 }
