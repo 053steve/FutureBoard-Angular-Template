@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { showSpinner, hideSpinner } from '../common/components/spinner/spinner.action';
-import {CoreModule} from "../common/modules/core.module";
+import {CoreModule} from "../core/core.module";
 import {SpinnerState} from "../common/components/spinner/spinner.interface";
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {CoreModule} from "../common/modules/core.module";
+import {CoreModule} from "../core/core.module";
 
 
 @Component({
