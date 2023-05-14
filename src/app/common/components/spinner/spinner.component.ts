@@ -4,12 +4,13 @@ import {Store} from '@ngrx/store';
 import {CommonModule} from "@angular/common";
 import {isLoadingSelector} from "./spinner.selector";
 import {AppState} from "../../../app.state.interface";
+import {CoreModule} from "../../modules/core.module";
 
 @Component({
   selector: 'app-spinner',
   standalone: true,
   imports: [
-    CommonModule
+    CoreModule
   ],
   template: `
       <ng-container *ngIf="showSpinner$ | async as showSpinner">

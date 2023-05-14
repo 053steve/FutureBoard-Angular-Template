@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import {SharedModule} from "../common/modules/shared.module";
+import {CoreModule} from "../common/modules/core.module";
 
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
-    SharedModule
+    CoreModule
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']

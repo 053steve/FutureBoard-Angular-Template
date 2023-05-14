@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { showSpinner, hideSpinner } from '../common/components/spinner/spinner.action';
-import {SharedModule} from "../common/modules/shared.module";
+import {CoreModule} from "../common/modules/core.module";
 import {SpinnerState} from "../common/components/spinner/spinner.interface";
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    SharedModule,
+    CoreModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']

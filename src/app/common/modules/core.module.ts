@@ -31,4 +31,4 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     TranslateModule,
   ],
 })
-export class SharedModule { }
+export class CoreModule { }
