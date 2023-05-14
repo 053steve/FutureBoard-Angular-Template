@@ -1,8 +1,9 @@
 import { createSelector } from "@ngrx/store";
-import {SpinnerState} from "./spinner.interface";
-// import { AppState } from "../../../app.state.interface";
+import {AppState} from "../../../app.state.interface";
 
-export const selectFeature = (state: SpinnerState) => state;
+export const selectFeature = (state: AppState) => state.spinner;
 
 
-export const isLoadingSelector = createSelector(selectFeature, state => state.isLoading);
+export const isLoadingSelector = createSelector(selectFeature, state => {
+  return state.isLoading;
+});

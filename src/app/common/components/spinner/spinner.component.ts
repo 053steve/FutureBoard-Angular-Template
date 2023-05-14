@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {select, Store} from '@ngrx/store';
-import {SpinnerState} from "./spinner.interface";
+import {Store} from '@ngrx/store';
 import {CommonModule} from "@angular/common";
 import {isLoadingSelector} from "./spinner.selector";
+import {AppState} from "../../../app.state.interface";
 
 @Component({
   selector: 'app-spinner',
@@ -25,14 +25,9 @@ import {isLoadingSelector} from "./spinner.selector";
 export class SpinnerComponent implements OnInit {
   showSpinner$: Observable<boolean> | undefined;
 
-  constructor(private store: Store<SpinnerState>) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    console.log('this.store.select(isLoading)');
-    // console.log(this.store.select('isLoading'));
-    // this.showSpinner$ = this.store.select('isLoading');
-
-    this.showSpinner$ = this.store.pipe(select(isLoadingSelector))
-    console.log(this.showSpinner$);
+    this.showSpinner$ = this.store.select(isLoadingSelector);
   }
 }
