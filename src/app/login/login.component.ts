@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { showSpinner, hideSpinner } from '../common/components/spinner/spinner.action';
 import {CoreModule} from "../core/core.module";
+import {login} from "../common/services/auth/auth.action";
 
 @Component({
   selector: 'app-login',
@@ -14,19 +14,18 @@ import {CoreModule} from "../core/core.module";
 })
 export class LoginComponent implements OnInit {
 
+  username = 'sberminghamh';
+  password = 'cAjfb8vg';
+
   constructor(
-    private store: Store<any>
+    private store: Store<any>,
   ) {
   }
 
   ngOnInit() {
   }
 
-  onLoad() {
-    this.store.dispatch(showSpinner())
-  }
-
-  stopLoad() {
-    this.store.dispatch(hideSpinner())
+  onSubmit() {
+    this.store.dispatch(login({username: this.username, password: this.password}))
   }
 }

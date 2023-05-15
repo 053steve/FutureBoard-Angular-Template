@@ -15,6 +15,8 @@ import {spinnerReducer} from "./app/common/components/spinner/spinner.reducer";
 import {provideRouterStore, StoreRouterConnectingModule} from "@ngrx/router-store";
 import {provideStoreDevtools, StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule, provideEffects} from "@ngrx/effects";
+import {AuthEffect} from "./app/common/services/auth/auth.effect";
+import {authReducer} from "./app/common/services/auth/auth.reducer";
 
 // required for AOT compilation
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -23,24 +25,27 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 
 
 const interceptorProviders = [
-  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  // { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
 ]
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    ...interceptorProviders,
     TranslateStore,
     provideStore({
+      auth: authReducer,
       spinner: spinnerReducer
     }),
     provideRouterStore(),
     provideStoreDevtools(),
-    provideEffects(),
+    provideEffects([
+      AuthEffect
+    ]),
     importProvidersFrom(
       HttpClientModule,
-    )
+    ),
+    ...interceptorProviders,
   ],
 }).catch((err) => console.error(err));
 
