@@ -29,14 +29,18 @@ const interceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
 ]
 
+// this is where we create the store, add all the reducers here.
+const mainStore = {
+  auth: authReducer,
+  spinner: spinnerReducer
+}
+
+
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     TranslateStore,
-    provideStore({
-      auth: authReducer,
-      spinner: spinnerReducer
-    }),
+    provideStore(mainStore),
     provideRouterStore(),
     provideStoreDevtools(),
     provideEffects([
