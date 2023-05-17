@@ -8,9 +8,6 @@ export const initialState: AuthState = {
 
 export const authReducer = createReducer(
   initialState,
-  // on(loginSuccess, (state) => (
-  //   {...state, authToken: state.authToken}
-  // )),
   on(loginSuccess, (state, { authToken }) => {
     return {
       ...state,

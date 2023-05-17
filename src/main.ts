@@ -17,6 +17,7 @@ import {provideStoreDevtools, StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {EffectsModule, provideEffects} from "@ngrx/effects";
 import {AuthEffect} from "./app/common/services/auth/auth.effect";
 import {authReducer} from "./app/common/services/auth/auth.reducer";
+import {alertReducer} from './app/common/components/alert/alert.reducer';
 
 // required for AOT compilation
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -32,7 +33,8 @@ const interceptorProviders = [
 // this is where we create the store, add all the reducers here.
 const mainStore = {
   auth: authReducer,
-  spinner: spinnerReducer
+  spinner: spinnerReducer,
+  alert: alertReducer
 }
 
 

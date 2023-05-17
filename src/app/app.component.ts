@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {SpinnerComponent} from "./common/components/spinner/spinner.component";
-
+import { AlertComponent } from './common/components/alert/alert.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,8 @@ import {SpinnerComponent} from "./common/components/spinner/spinner.component";
   standalone: true,
   imports: [
     SpinnerComponent,
-    RouterModule
+    RouterModule,
+    AlertComponent
   ]
 })
 

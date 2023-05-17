@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {CoreModule} from "../core/core.module";
+import {Store} from "@ngrx/store";
+import {hideAlert, showAlert} from "../common/components/alert/alert.action";
 
 
 @Component({
@@ -13,4 +15,16 @@ import {CoreModule} from "../core/core.module";
 })
 export class MainComponent {
 
+  constructor(
+    private store: Store<any>,
+  ) {
+  }
+
+  showAlert() {
+    this.store.dispatch(showAlert({alertType: 'some-alert-type', text: 'alert text example'}));
+  }
+
+  hideAlert() {
+    this.store.dispatch(hideAlert());
+  }
 }
