@@ -10,6 +10,6 @@ export const initialState: AlertState = {
 
 export const alertReducer = createReducer(
   initialState,
-  on(hideAlert, (state) => ({...state, isShow: false})),
+  on(hideAlert, (state) => ({...state, isShow: false, alertType: '', text: ''})),
   on(showAlert, (state, {alertType, text}) => ({...state, isShow: true, alertType, text }))
 );
