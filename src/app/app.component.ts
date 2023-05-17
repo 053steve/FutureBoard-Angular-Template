@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import {SpinnerComponent} from "./common/components/spinner/spinner.component";
-import { AlertComponent } from './common/components/alert/alert.component';
+import {CoreComponent} from "./core/core.component";
 
 @Component({
   selector: 'app-root',
@@ -9,9 +7,7 @@ import { AlertComponent } from './common/components/alert/alert.component';
   styleUrls: ['./app.component.scss'],
   standalone: true,
   imports: [
-    SpinnerComponent,
-    RouterModule,
-    AlertComponent
+    ...CoreComponent
   ]
 })
 
