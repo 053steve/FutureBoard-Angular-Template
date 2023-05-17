@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {CoreModule} from "../core/core.module";
 import {Store} from "@ngrx/store";
 import {hideAlert, showAlert} from "../common/components/alert/alert.action";
@@ -14,11 +14,16 @@ import {ALERT_STATUS} from "../common/components/alert/alert.component";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
 
   constructor(
-    private store: Store<any>,
+    private store: Store,
   ) {
+  }
+
+  ngOnInit() {
+
+
   }
 
   showAlert() {
@@ -27,5 +32,9 @@ export class MainComponent {
 
   hideAlert() {
     this.store.dispatch(hideAlert());
+  }
+
+  showModal() {
+
   }
 }
