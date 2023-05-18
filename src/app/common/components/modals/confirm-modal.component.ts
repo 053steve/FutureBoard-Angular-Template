@@ -1,26 +1,30 @@
 // my-modal.component.ts
 
-import { Component, EventEmitter, Output } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, inject, Output} from '@angular/core';
 import {CoreModule} from "../../../core/core.module";
+import {DialogRef} from "@ngneat/dialog";
+
+interface Data {
+  title: string
+}
 
 @Component({
   selector: 'app-confirm-modal',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CoreModule
+    CoreModule,
   ],
   template: `
-    <div class="modal-content">
-      <!-- Modal content goes here -->
-      <h1>My Modal</h1>
-      <button (click)="onClose()">Close Modal</button>
-    </div>
+      <h1>{{title}}</h1>
+      <button (click)="ref.close(true)"></button>
   `,
 })
 export class ConfirmModalComponent {
-  @Output() someOutput = new EventEmitter<any>();
+  ref: DialogRef<Data, boolean> = inject(DialogRef);
 
-  onClose(): void {
-    this.someOutput.emit('Some data from the modal');
+  get title() {
+    if (!this.ref.data) return 'Hello world';
+    return this.ref.data.title;
   }
 }
