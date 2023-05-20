@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AuthService } from './auth.service';
-import { login, loginSuccess, loginFailure } from './auth.action';
+import {login, loginSuccess, loginFailure, logout} from './auth.action';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 import { of } from 'rxjs';
 import {showSpinner, hideSpinner} from '../../components/spinner/spinner.action';
@@ -55,4 +55,16 @@ export class AuthEffect {
       ),
     {dispatch: false}
   );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(logout),
+      tap((action) => {
+        // delete from authToken
+        this.authService.logout();
+        this.router.navigate(['/login']);
+      })
+    ),
+    {dispatch: false}
+  )
 }

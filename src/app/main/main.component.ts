@@ -5,6 +5,7 @@ import {hideAlert, showAlert} from "../common/components/alert/alert.action";
 import {ALERT_STATUS} from "../common/components/alert/alert.component";
 import { DialogService } from '@ngneat/dialog';
 import {ConfirmModalComponent} from "../common/components/modals/confirm-modal.component";
+import {logout} from "../common/services/auth/auth.action";
 
 
 @Component({
@@ -44,5 +45,9 @@ export class MainComponent implements OnInit{
         title: 'something',
       },
     });
+  }
+
+  logout() {
+    this.store.dispatch(logout())
   }
 }

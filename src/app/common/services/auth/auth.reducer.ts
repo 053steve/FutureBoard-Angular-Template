@@ -11,9 +11,10 @@ export const authReducer = createReducer(
   on(loginSuccess, (state, { authToken }) => {
     return {
       ...state,
-      authToken: authToken
-    };
+      authToken
+    }
   }),
+
   on(logout, state => ({
     ...state,
     authToken: null
