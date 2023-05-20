@@ -1,19 +1,9 @@
 # FutureboardNgBoilerplate
 
-# Todo
+# Notice
+Just use this with node 18.26
 
-* auth-guard (awaiting integration with client service)
-* tailwind css (done)
-* translation (done)
-* dialog-service
-* session-service
-* loading-service (done)
-* token-service
-* interceptors (awaiting integration with client service + retry function)
-* environment (done)
-* package for common services as a library, use public npm package
-* integrate with dummy login
-* package for client service
-* keep state when refresh
-* ngrx state management (implemented store example)
-
+# This is the angular template used in FutureBoard currenly
+1. angular 16
+3. ngrx
+4. standalone components (mostly)
